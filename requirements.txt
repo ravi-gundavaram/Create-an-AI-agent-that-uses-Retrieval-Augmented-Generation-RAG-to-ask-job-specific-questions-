@@ -1,0 +1,7 @@
+openai
+streamlit
+PyPDF2
+langchain
+faiss-cpu
+selenium
+linkedin-scraper
