@@ -4,4 +4,5 @@ PyPDF2
 langchain
 faiss-cpu
 selenium
+webdriver-manager
 linkedin-scraper

@@ -2,11 +2,18 @@ import os
 import openai
 from PyPDF2 import PdfReader
 import streamlit as st
-#from langchain_community.embeddings import OpenAIEmbeddings
+from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain_community.document_loaders import UnstructuredFileLoader
 from langchain_community.llms import OpenAI
+from langchain.vectorstores import FAISS
+from langchain.document_loaders import UnstructuredFileLoader
+from langchain.llms import OpenAI
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from linkedin_scraper import Person, actions
 
 
 # Set your OpenAI API key
