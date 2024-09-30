@@ -2,12 +2,12 @@ import os
 import openai
 from PyPDF2 import PdfReader
 import streamlit as st
-from langchain.embeddings import OpenAIEmbeddings
-from langchain.vectorstores import FAISS
-from langchain.chains import RetrievalQA
-from langchain.llms import OpenAI
-from langchain.document_loaders import UnstructuredFileLoader
-from langchain.prompts import PromptTemplate
+#from langchain_community.embeddings import OpenAIEmbeddings
+from langchain_openai import OpenAIEmbeddings
+from langchain_community.vectorstores import FAISS
+from langchain_community.document_loaders import UnstructuredFileLoader
+from langchain_community.llms import OpenAI
+
 
 # Set your OpenAI API key
 openai.api_key = os.getenv("OPENAI_API_KEY")
@@ -111,10 +111,10 @@ if st.button("Evaluate Response"):
         st.write("Evaluation:", evaluation)
 
 from selenium import webdriver
-from linkedin_scraper import Person, actions
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 
-# Set up Selenium WebDriver (Ensure you have the correct chromedriver installed)
-driver = webdriver.Chrome(executable_path='path_to_chromedriver')
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
 # Function to extract LinkedIn profile details
 def extract_linkedin_profile(profile_url):
