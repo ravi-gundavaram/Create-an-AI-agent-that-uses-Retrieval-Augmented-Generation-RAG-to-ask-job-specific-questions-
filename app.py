@@ -2,18 +2,15 @@ import os
 import openai
 from PyPDF2 import PdfReader
 import streamlit as st
-from langchain.embeddings.openai import OpenAIEmbeddings
-from langchain_openai import OpenAIEmbeddings
-from langchain_community.vectorstores import FAISS
-from langchain_community.document_loaders import UnstructuredFileLoader
-from langchain_community.llms import OpenAI
-from langchain.vectorstores import FAISS
-from langchain.document_loaders import UnstructuredFileLoader
-from langchain.llms import OpenAI
+from langchain_community.embeddings import OpenAIEmbeddings  # Updated import
+from langchain_community.vectorstores import FAISS  # Updated import
+from langchain_community.document_loaders import UnstructuredFileLoader  # Updated import
+from langchain_community.llms import OpenAI  # Updated import
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from linkedin_scraper import Person, actions
+
 
 
 # Set your OpenAI API key
@@ -32,10 +29,11 @@ job_description_input = st.text_area("Enter Job Description")
 resume_input = st.file_uploader("Upload Resume", type=["pdf", "txt"])
 
 # Load job description and resume documents into retriever
+# Load job description and resume documents into retriever
 def load_documents(job_description, resume_text):
-    with open("job_description.txt", "w") as f:
+    with open("job_description.txt", "w", encoding="utf-8") as f:
         f.write(job_description)
-    with open("resume.txt", "w") as f:
+    with open("resume.txt", "w", encoding="utf-8") as f:
         f.write(resume_text)
 
     loader = UnstructuredFileLoader(["job_description.txt", "resume.txt"])
